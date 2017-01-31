@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<p class="dateDays"></p>
+<p class="dateHours"></p>
+<p class="dateMinutes"></p>
+<p class="dateSeconds"></p>
+<script>
+    'use strict';
+    (function () {
+        var elemDays = document.getElementsByClassName('dateDays')[0],
+            elemHours = document.getElementsByClassName('dateHours')[0],
+            elemMin = document.getElementsByClassName('dateMinutes')[0],
+            elemSec = document.getElementsByClassName('dateSeconds')[0];
+        setInterval(function () {
+            var thisDate = new Date(),
+                dateSuper = new Date(2017,1,5,12),
+                getSecondsAround = Math.round((dateSuper.valueOf() - thisDate.valueOf()) / 1000);
+
+            elemDays.textContent = Math.round(getSecondsAround /60 /60 / 24 - 1);
+            elemHours.textContent = Math.round(getSecondsAround / 60 / 60 );
+            elemMin.textContent = Math.round(getSecondsAround / 60);
+            elemSec.textContent = Math.round(getSecondsAround);
+            console.log(Math.round(getSecondsAround) - Math.round(getSecondsAround /60))
+        }, 1000);
+
+    })();
+</script>
+</body>
+</html>
